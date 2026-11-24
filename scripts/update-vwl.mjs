@@ -18,6 +18,14 @@
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import {
+  buildManifestEntry,
+  diffObservations,
+  normalizeText,
+  parseObservations,
+  recordRevisions,
+  yearBounds
+} from './vwl-snapshot-core.mjs';
 
 const BASE = 'https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data';
 const HISTORY_FROM = '2000';
@@ -183,48 +191,6 @@ if (revisionsChanged || !(await exists(revisionsPath))) {
 const fileCount = (await listJsonFiles(vwlDir)).length;
 log(`Fertig: ${Object.keys(manifestDatasets).length} Reihen, ${fileCount} JSON-Dateien in ${vwlDir}.`);
 
-function buildManifestEntry(definition, history, latest, sourceUrl, revisionLog) {
-  const files = [history?.file, latest?.file].filter(Boolean);
-  const entries = files
-    .map((file) => [file, revisionLog.files[file]])
-    .filter(([, info]) => Number(info?.count) > 0)
-    .map(([file, info]) => ({ label: file, count: Number(info.count) }));
-  const count = entries.reduce((sum, entry) => sum + entry.count, 0);
-  const dates = files
-    .map((file) => revisionLog.files[file]?.lastDetectedAt)
-    .filter(Boolean)
-    .sort();
-  return {
-    indicators: definition.indicators,
-    code: definition.code,
-    query: { filters: definition.filters },
-    sourceUrl: sourceUrl || null,
-    history: history || null,
-    latest: latest || null,
-    revisions: {
-      file: 'revisions.json',
-      count,
-      lastDetectedAt: dates[dates.length - 1] || null,
-      entries
-    }
-  };
-}
-
-function recordRevisions(log, file, changes, detectedAt) {
-  const entry = log.files[file] || {
-    label: file,
-    count: 0,
-    lastDetectedAt: null,
-    changes: []
-  };
-  for (const change of changes) {
-    entry.changes.push({ ...change, detectedAt });
-  }
-  entry.count += changes.length;
-  entry.lastDetectedAt = detectedAt;
-  log.files[file] = entry;
-}
-
 function buildUrl(definition, sinceTimePeriod, untilTimePeriod) {
   const params = new URLSearchParams();
   params.set('format', 'JSON');
@@ -270,91 +236,6 @@ async function fetchDataset(url) {
     }
   }
   throw new Error(`Eurostat-Abruf endgültig fehlgeschlagen: ${lastError?.message || 'unbekannt'}\n${url}`);
-}
-
-/**
- * Minimaler JSON-stat-Dekoder für Jahresvergleiche. Die App nutzt ihren
- * eigenen Parser; hier werden nur Serienkennung, Zeit und Wert benötigt.
- */
-function parseObservations(json) {
-  if (!Array.isArray(json?.id) || !Array.isArray(json?.size) || json.id.length !== json.size.length) {
-    throw new Error('JSON-stat: Dimensionsangaben fehlen oder passen nicht zusammen.');
-  }
-  const ids = json.id;
-  const sizes = json.size;
-  const codes = ids.map((id) => categoryCodes(json.dimension?.[id]));
-  const strides = new Array(sizes.length).fill(1);
-  for (let index = sizes.length - 2; index >= 0; index -= 1) {
-    strides[index] = strides[index + 1] * sizes[index + 1];
-  }
-  const timeIndex = ids.indexOf('time');
-  if (timeIndex < 0) throw new Error('JSON-stat: Zeitdimension fehlt.');
-  const seriesIndices = ids.map((_, index) => index).filter((index) => index !== timeIndex);
-  const values = Array.isArray(json.value)
-    ? json.value.map((value, index) => [String(index), value])
-    : Object.entries(json.value || {});
-  const observations = new Map();
-  const years = new Set();
-
-  for (const [flatKey, rawValue] of values) {
-    const flat = Number(flatKey);
-    if (!Number.isInteger(flat) || flat < 0) continue;
-    const numeric = rawValue === null || rawValue === undefined || rawValue === '' ? NaN : Number(rawValue);
-    if (!Number.isFinite(numeric)) continue;
-    const coordinates = {};
-    for (let index = 0; index < ids.length; index += 1) {
-      coordinates[ids[index]] = Math.floor(flat / strides[index]) % sizes[index];
-    }
-    const time = codes[timeIndex][coordinates[ids[timeIndex]]];
-    if (time === undefined || time === null) continue;
-    const series = seriesIndices
-      .map((index) => `${ids[index]}=${codes[index][coordinates[ids[index]]] ?? coordinates[ids[index]]}`)
-      .join('&');
-    const observation = { series, time: String(time), value: numeric };
-    observations.set(`${series}|${observation.time}`, observation);
-    const year = Number(String(time).slice(0, 4));
-    if (Number.isInteger(year)) years.add(year);
-  }
-
-  return { observations, years: [...years].sort((left, right) => left - right) };
-}
-
-function categoryCodes(dimension) {
-  const index = dimension?.category?.index;
-  if (Array.isArray(index)) return index.map(String);
-  if (index && typeof index === 'object') {
-    const codes = [];
-    for (const [code, position] of Object.entries(index)) codes[Number(position)] = String(code);
-    return codes;
-  }
-  return [];
-}
-
-function diffObservations(previous, next) {
-  const changes = [];
-  for (const [key, observation] of next.observations) {
-    const before = previous.observations.get(key);
-    if (!before) continue; // neues Jahr oder neue Serie: Ergänzung, keine Revision
-    if (before.value !== observation.value) {
-      changes.push({
-        series: observation.series,
-        time: observation.time,
-        oldValue: before.value,
-        newValue: observation.value
-      });
-    }
-  }
-  return changes;
-}
-
-function yearBounds(years) {
-  const sorted = [...new Set(years)].sort((left, right) => left - right);
-  return { from: sorted[0], to: sorted[sorted.length - 1] };
-}
-
-function normalizeText(text) {
-  const trimmed = String(text).replace(/^\uFEFF/, '').trimEnd();
-  return `${trimmed}\n`;
 }
 
 async function readJsonIfExists(file) {

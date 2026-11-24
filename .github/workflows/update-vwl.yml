@@ -25,6 +25,9 @@ jobs:
         with:
           node-version: '22'
 
+      - name: Revisionslogik testen
+        run: node --test tests/
+
       - name: Snapshots erzeugen
         run: node scripts/update-vwl.mjs --out .
 

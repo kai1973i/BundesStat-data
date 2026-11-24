@@ -77,6 +77,24 @@ node scripts/update-vwl.mjs --out . --refresh-history
 Der Generator benötigt nur Node.js (≥ 20) und Netzwerkzugang; keine
 zusätzlichen Pakete.
 
+## Tests
+
+Der Workflow führt vor jedem Lauf die Revisionstests aus:
+
+```bash
+node --test tests/
+```
+
+Die Tests prüfen die Revisionslogik mit einer künstlich geänderten
+2025-Beobachtung: alter Wert, neuer Wert und Erkennungszeitpunkt müssen im
+Revisionsprotokoll stehen und als Manifest-Marke sichtbar werden. Ein
+unveränderter Wert und ein neues Jahr dürfen keine Revision erzeugen.
+
+Die App prüft zusätzlich in `tests/integration/snapshot-manifest.test.js`,
+ob die veröffentlichten Manifest-Filter noch zu den Definitionen in
+`src/core/services/economics.js` passen. Dieser Test läuft mit Netzwerk;
+offline wird er übersprungen.
+
 ## Herkunft, Lizenz und Grenzen
 
 - **Quelle:** Eurostat, `https://ec.europa.eu/eurostat`. Die Dateien sind
