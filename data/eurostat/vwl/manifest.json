@@ -1,0 +1,513 @@
+{
+  "schemaVersion": 1,
+  "source": "Eurostat",
+  "licence": "Wiederverwendung mit Quellenangabe (Beschluss 2011/833/EU)",
+  "historyThrough": 2024,
+  "latestFrom": 2025,
+  "generatedAt": "2026-11-24T15:12:00.353Z",
+  "datasets": {
+    "nama_10_pc": {
+      "indicators": [
+        "gdpPerCapita"
+      ],
+      "code": "nama_10_pc",
+      "query": {
+        "filters": {
+          "unit": "CP_EUR_HAB",
+          "na_item": "B1GQ"
+        }
+      },
+      "sourceUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nama_10_pc?format=JSON&lang=DE&geo=DE&sinceTimePeriod=2000&untilTimePeriod=2024&unit=CP_EUR_HAB&na_item=B1GQ",
+      "history": {
+        "file": "nama_10_pc/history.json",
+        "fromYear": 2000,
+        "toYear": 2024,
+        "retrievedAt": "2026-11-24T15:12:00.353Z"
+      },
+      "latest": {
+        "file": "nama_10_pc/latest.json",
+        "fromYear": 2025,
+        "toYear": 2025,
+        "retrievedAt": "2026-11-24T15:12:00.353Z"
+      },
+      "revisions": {
+        "file": "revisions.json",
+        "count": 0,
+        "lastDetectedAt": null,
+        "entries": []
+      }
+    },
+    "une_rt_a": {
+      "indicators": [
+        "unemployment"
+      ],
+      "code": "une_rt_a",
+      "query": {
+        "filters": {
+          "age": "Y15-74",
+          "unit": "PC_ACT",
+          "sex": "T"
+        }
+      },
+      "sourceUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/une_rt_a?format=JSON&lang=DE&geo=DE&sinceTimePeriod=2000&untilTimePeriod=2024&age=Y15-74&unit=PC_ACT&sex=T",
+      "history": {
+        "file": "une_rt_a/history.json",
+        "fromYear": 2009,
+        "toYear": 2024,
+        "retrievedAt": "2026-11-24T15:12:00.353Z"
+      },
+      "latest": {
+        "file": "une_rt_a/latest.json",
+        "fromYear": 2025,
+        "toYear": 2025,
+        "retrievedAt": "2026-11-24T15:12:00.353Z"
+      },
+      "revisions": {
+        "file": "revisions.json",
+        "count": 0,
+        "lastDetectedAt": null,
+        "entries": []
+      }
+    },
+    "prc_hicp_aind": {
+      "indicators": [
+        "inflation"
+      ],
+      "code": "prc_hicp_aind",
+      "query": {
+        "filters": {
+          "unit": "RCH_A_AVG",
+          "coicop": "CP00"
+        }
+      },
+      "sourceUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/prc_hicp_aind?format=JSON&lang=DE&geo=DE&sinceTimePeriod=2000&untilTimePeriod=2024&unit=RCH_A_AVG&coicop=CP00",
+      "history": {
+        "file": "prc_hicp_aind/history.json",
+        "fromYear": 2000,
+        "toYear": 2024,
+        "retrievedAt": "2026-11-24T15:12:00.353Z"
+      },
+      "latest": {
+        "file": "prc_hicp_aind/latest.json",
+        "fromYear": 2025,
+        "toYear": 2025,
+        "retrievedAt": "2026-11-24T15:12:00.353Z"
+      },
+      "revisions": {
+        "file": "revisions.json",
+        "count": 0,
+        "lastDetectedAt": null,
+        "entries": []
+      }
+    },
+    "gov_10dd_edpt1": {
+      "indicators": [
+        "debtRatio"
+      ],
+      "code": "gov_10dd_edpt1",
+      "query": {
+        "filters": {
+          "unit": "PC_GDP",
+          "sector": "S13",
+          "na_item": "GD"
+        }
+      },
+      "sourceUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10dd_edpt1?format=JSON&lang=DE&geo=DE&sinceTimePeriod=2000&untilTimePeriod=2024&unit=PC_GDP&sector=S13&na_item=GD",
+      "history": {
+        "file": "gov_10dd_edpt1/history.json",
+        "fromYear": 2000,
+        "toYear": 2024,
+        "retrievedAt": "2026-11-24T15:12:00.353Z"
+      },
+      "latest": {
+        "file": "gov_10dd_edpt1/latest.json",
+        "fromYear": 2025,
+        "toYear": 2025,
+        "retrievedAt": "2026-11-24T15:12:00.353Z"
+      },
+      "revisions": {
+        "file": "revisions.json",
+        "count": 0,
+        "lastDetectedAt": null,
+        "entries": []
+      }
+    },
+    "lfsa_ergan": {
+      "indicators": [
+        "employment"
+      ],
+      "code": "lfsa_ergan",
+      "query": {
+        "filters": {
+          "unit": "PC",
+          "sex": "T",
+          "age": "Y20-64",
+          "citizen": "TOTAL"
+        }
+      },
+      "sourceUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/lfsa_ergan?format=JSON&lang=DE&geo=DE&sinceTimePeriod=2000&untilTimePeriod=2024&unit=PC&sex=T&age=Y20-64&citizen=TOTAL",
+      "history": {
+        "file": "lfsa_ergan/history.json",
+        "fromYear": 2000,
+        "toYear": 2024,
+        "retrievedAt": "2026-11-24T15:12:00.353Z"
+      },
+      "latest": {
+        "file": "lfsa_ergan/latest.json",
+        "fromYear": 2025,
+        "toYear": 2025,
+        "retrievedAt": "2026-11-24T15:12:00.353Z"
+      },
+      "revisions": {
+        "file": "revisions.json",
+        "count": 0,
+        "lastDetectedAt": null,
+        "entries": []
+      }
+    },
+    "demo_mlexpec": {
+      "indicators": [
+        "lifeExpectancy"
+      ],
+      "code": "demo_mlexpec",
+      "query": {
+        "filters": {
+          "unit": "YR",
+          "sex": "T",
+          "age": "Y_LT1"
+        }
+      },
+      "sourceUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_mlexpec?format=JSON&lang=DE&geo=DE&sinceTimePeriod=2000&untilTimePeriod=2024&unit=YR&sex=T&age=Y_LT1",
+      "history": {
+        "file": "demo_mlexpec/history.json",
+        "fromYear": 2000,
+        "toYear": 2024,
+        "retrievedAt": "2026-11-24T15:12:00.353Z"
+      },
+      "latest": null,
+      "revisions": {
+        "file": "revisions.json",
+        "count": 0,
+        "lastDetectedAt": null,
+        "entries": []
+      }
+    },
+    "ilc_di12": {
+      "indicators": [
+        "gini"
+      ],
+      "code": "ilc_di12",
+      "query": {
+        "filters": {
+          "age": "TOTAL",
+          "statinfo": "GINI_HND"
+        }
+      },
+      "sourceUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/ilc_di12?format=JSON&lang=DE&geo=DE&sinceTimePeriod=2000&untilTimePeriod=2024&age=TOTAL&statinfo=GINI_HND",
+      "history": {
+        "file": "ilc_di12/history.json",
+        "fromYear": 2005,
+        "toYear": 2024,
+        "retrievedAt": "2026-11-24T15:12:00.353Z"
+      },
+      "latest": {
+        "file": "ilc_di12/latest.json",
+        "fromYear": 2025,
+        "toYear": 2025,
+        "retrievedAt": "2026-11-24T15:12:00.353Z"
+      },
+      "revisions": {
+        "file": "revisions.json",
+        "count": 0,
+        "lastDetectedAt": null,
+        "entries": []
+      }
+    },
+    "edat_lfse_03": {
+      "indicators": [
+        "tertiary"
+      ],
+      "code": "edat_lfse_03",
+      "query": {
+        "filters": {
+          "sex": "T",
+          "age": "Y25-34",
+          "unit": "PC",
+          "isced11": "ED5-8"
+        }
+      },
+      "sourceUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/edat_lfse_03?format=JSON&lang=DE&geo=DE&sinceTimePeriod=2000&untilTimePeriod=2024&sex=T&age=Y25-34&unit=PC&isced11=ED5-8",
+      "history": {
+        "file": "edat_lfse_03/history.json",
+        "fromYear": 2000,
+        "toYear": 2024,
+        "retrievedAt": "2026-11-24T15:12:00.353Z"
+      },
+      "latest": {
+        "file": "edat_lfse_03/latest.json",
+        "fromYear": 2025,
+        "toYear": 2025,
+        "retrievedAt": "2026-11-24T15:12:00.353Z"
+      },
+      "revisions": {
+        "file": "revisions.json",
+        "count": 0,
+        "lastDetectedAt": null,
+        "entries": []
+      }
+    },
+    "env_air_gge": {
+      "indicators": [
+        "emissions"
+      ],
+      "code": "env_air_gge",
+      "query": {
+        "filters": {
+          "unit": "MIO_T",
+          "airpol": "GHG",
+          "src_crf": "TOTXMEMO"
+        }
+      },
+      "sourceUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/env_air_gge?format=JSON&lang=DE&geo=DE&sinceTimePeriod=2000&untilTimePeriod=2024&unit=MIO_T&airpol=GHG&src_crf=TOTXMEMO",
+      "history": {
+        "file": "env_air_gge/history.json",
+        "fromYear": 2000,
+        "toYear": 2024,
+        "retrievedAt": "2026-11-24T15:12:00.353Z"
+      },
+      "latest": null,
+      "revisions": {
+        "file": "revisions.json",
+        "count": 0,
+        "lastDetectedAt": null,
+        "entries": []
+      }
+    },
+    "nrg_ind_ren": {
+      "indicators": [
+        "renewables"
+      ],
+      "code": "nrg_ind_ren",
+      "query": {
+        "filters": {
+          "nrg_bal": "REN",
+          "unit": "PC"
+        }
+      },
+      "sourceUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nrg_ind_ren?format=JSON&lang=DE&geo=DE&sinceTimePeriod=2000&untilTimePeriod=2024&nrg_bal=REN&unit=PC",
+      "history": {
+        "file": "nrg_ind_ren/history.json",
+        "fromYear": 2004,
+        "toYear": 2024,
+        "retrievedAt": "2026-11-24T15:12:00.353Z"
+      },
+      "latest": {
+        "file": "nrg_ind_ren/latest.json",
+        "fromYear": 2025,
+        "toYear": 2025,
+        "retrievedAt": "2026-11-24T15:12:00.353Z"
+      },
+      "revisions": {
+        "file": "revisions.json",
+        "count": 0,
+        "lastDetectedAt": null,
+        "entries": []
+      }
+    },
+    "rd_e_gerdtot": {
+      "indicators": [
+        "rnd"
+      ],
+      "code": "rd_e_gerdtot",
+      "query": {
+        "filters": {
+          "sectperf": "TOTAL",
+          "unit": "PC_GDP"
+        }
+      },
+      "sourceUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/rd_e_gerdtot?format=JSON&lang=DE&geo=DE&sinceTimePeriod=2000&untilTimePeriod=2024&sectperf=TOTAL&unit=PC_GDP",
+      "history": {
+        "file": "rd_e_gerdtot/history.json",
+        "fromYear": 2000,
+        "toYear": 2024,
+        "retrievedAt": "2026-11-24T15:12:00.353Z"
+      },
+      "latest": {
+        "file": "rd_e_gerdtot/latest.json",
+        "fromYear": 2025,
+        "toYear": 2025,
+        "retrievedAt": "2026-11-24T15:12:00.353Z"
+      },
+      "revisions": {
+        "file": "revisions.json",
+        "count": 0,
+        "lastDetectedAt": null,
+        "entries": []
+      }
+    },
+    "nama_10_gdp": {
+      "indicators": [
+        "gdpTotal"
+      ],
+      "code": "nama_10_gdp",
+      "query": {
+        "filters": {
+          "unit": "CP_MEUR",
+          "na_item": "B1GQ"
+        }
+      },
+      "sourceUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nama_10_gdp?format=JSON&lang=DE&geo=DE&sinceTimePeriod=2000&untilTimePeriod=2024&unit=CP_MEUR&na_item=B1GQ",
+      "history": {
+        "file": "nama_10_gdp/history.json",
+        "fromYear": 2000,
+        "toYear": 2024,
+        "retrievedAt": "2026-11-24T15:12:00.353Z"
+      },
+      "latest": {
+        "file": "nama_10_gdp/latest.json",
+        "fromYear": 2025,
+        "toYear": 2025,
+        "retrievedAt": "2026-11-24T15:12:00.353Z"
+      },
+      "revisions": {
+        "file": "revisions.json",
+        "count": 0,
+        "lastDetectedAt": null,
+        "entries": []
+      }
+    },
+    "nama_10_pe": {
+      "indicators": [
+        "population"
+      ],
+      "code": "nama_10_pe",
+      "query": {
+        "filters": {
+          "unit": "THS_PER",
+          "na_item": "POP_NC"
+        }
+      },
+      "sourceUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nama_10_pe?format=JSON&lang=DE&geo=DE&sinceTimePeriod=2000&untilTimePeriod=2024&unit=THS_PER&na_item=POP_NC",
+      "history": {
+        "file": "nama_10_pe/history.json",
+        "fromYear": 2000,
+        "toYear": 2024,
+        "retrievedAt": "2026-11-24T15:12:00.353Z"
+      },
+      "latest": {
+        "file": "nama_10_pe/latest.json",
+        "fromYear": 2025,
+        "toYear": 2025,
+        "retrievedAt": "2026-11-24T15:12:00.353Z"
+      },
+      "revisions": {
+        "file": "revisions.json",
+        "count": 0,
+        "lastDetectedAt": null,
+        "entries": []
+      }
+    },
+    "gdpComponents": {
+      "indicators": [
+        "gdpComponents"
+      ],
+      "code": "nama_10_gdp",
+      "query": {
+        "filters": {
+          "unit": "CP_MEUR",
+          "na_item": [
+            "B1GQ",
+            "P31_S14_S15",
+            "P3_S13",
+            "P5G",
+            "P51G",
+            "P52_P53",
+            "P6",
+            "P7"
+          ]
+        }
+      },
+      "sourceUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nama_10_gdp?format=JSON&lang=DE&geo=DE&sinceTimePeriod=2000&untilTimePeriod=2024&unit=CP_MEUR&na_item=B1GQ&na_item=P31_S14_S15&na_item=P3_S13&na_item=P5G&na_item=P51G&na_item=P52_P53&na_item=P6&na_item=P7",
+      "history": {
+        "file": "gdpComponents/history.json",
+        "fromYear": 2000,
+        "toYear": 2024,
+        "retrievedAt": "2026-11-24T15:12:00.353Z"
+      },
+      "latest": {
+        "file": "gdpComponents/latest.json",
+        "fromYear": 2025,
+        "toYear": 2025,
+        "retrievedAt": "2026-11-24T15:12:00.353Z"
+      },
+      "revisions": {
+        "file": "revisions.json",
+        "count": 0,
+        "lastDetectedAt": null,
+        "entries": []
+      }
+    },
+    "gdpReal": {
+      "indicators": [
+        "gdpReal"
+      ],
+      "code": "nama_10_gdp",
+      "query": {
+        "filters": {
+          "unit": "CLV20_MEUR",
+          "na_item": "B1GQ"
+        }
+      },
+      "sourceUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nama_10_gdp?format=JSON&lang=DE&geo=DE&sinceTimePeriod=2000&untilTimePeriod=2024&unit=CLV20_MEUR&na_item=B1GQ",
+      "history": {
+        "file": "gdpReal/history.json",
+        "fromYear": 2000,
+        "toYear": 2024,
+        "retrievedAt": "2026-11-24T15:12:00.353Z"
+      },
+      "latest": {
+        "file": "gdpReal/latest.json",
+        "fromYear": 2025,
+        "toYear": 2025,
+        "retrievedAt": "2026-11-24T15:12:00.353Z"
+      },
+      "revisions": {
+        "file": "revisions.json",
+        "count": 0,
+        "lastDetectedAt": null,
+        "entries": []
+      }
+    },
+    "gdpDeflator": {
+      "indicators": [
+        "gdpDeflator"
+      ],
+      "code": "nama_10_gdp",
+      "query": {
+        "filters": {
+          "unit": "PD20_EUR",
+          "na_item": "B1GQ"
+        }
+      },
+      "sourceUrl": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nama_10_gdp?format=JSON&lang=DE&geo=DE&sinceTimePeriod=2000&untilTimePeriod=2024&unit=PD20_EUR&na_item=B1GQ",
+      "history": {
+        "file": "gdpDeflator/history.json",
+        "fromYear": 2000,
+        "toYear": 2024,
+        "retrievedAt": "2026-11-24T15:12:00.353Z"
+      },
+      "latest": {
+        "file": "gdpDeflator/latest.json",
+        "fromYear": 2025,
+        "toYear": 2025,
+        "retrievedAt": "2026-11-24T15:12:00.353Z"
+      },
+      "revisions": {
+        "file": "revisions.json",
+        "count": 0,
+        "lastDetectedAt": null,
+        "entries": []
+      }
+    }
+  }
+}

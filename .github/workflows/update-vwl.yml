@@ -1,0 +1,46 @@
+name: VWL-Snapshots aktualisieren
+
+on:
+  schedule:
+    # Am 1. jedes Monats, 06:00 UTC.
+    - cron: '0 6 1 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: vwl-snapshots
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Datenrepo auschecken
+        uses: actions/checkout@v4
+
+      - name: Node.js einrichten
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Snapshots erzeugen
+        run: node scripts/update-vwl.mjs --out .
+
+      - name: Änderungen anzeigen
+        run: |
+          git status --short
+          git diff --stat
+
+      - name: Commit und Push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/eurostat/vwl
+          if git diff --cached --quiet; then
+            echo "Keine neuen Daten; kein Commit."
+            exit 0
+          fi
+          git commit -m "VWL-Snapshots aktualisieren ($(date -u +%Y-%m-%d))"
+          git push
